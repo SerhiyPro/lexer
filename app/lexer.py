@@ -66,6 +66,7 @@ class Lexer:
             self.get_token()
         else:
             self.write_lexem_to_file('', '', f"unknown symbol '{current_symbol}'")
+            self.get_token()
 
     def process_tag(self):
         tag = f'<{self.get_current_symbol()}'

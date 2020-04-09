@@ -5,8 +5,9 @@
 <cell_close_tag '</td>'>
 <cell_open_tag '<td>'>
 <error in sentence 0 in position 33, number is not divisible by 5>
+<error in sentence 0 in position 33, unknown symbol 'f'>
 <Comma 'next line'>
-<error in sentence 0 in position 38, missing closing tag>
+<error in sentence 0 in position 39, missing closing tag>
 <row_close_tag '</tr>'>
 <table_open_tag '<table>'>
 <error in sentence 1 in position 13, wrong tag>
