@@ -49,7 +49,7 @@ class Lexer:
     def return_head(self):
         self.head_position -= 1
     
-    def process_token(self):
+    def get_token(self):
         current_symbol = self.get_current_symbol()
 
         if current_symbol == '':
@@ -63,7 +63,7 @@ class Lexer:
             self.process_digit(current_symbol)
         elif current_symbol == '\n':  # standard end of the line in file
             self.head_position += 1
-            self.process_token()
+            self.get_token()
         else:
             self.write_lexem_to_file('', '', f"unknown symbol '{current_symbol}'")
 
@@ -77,15 +77,15 @@ class Lexer:
 
         if tag[-1] != '>':
             self.write_lexem_to_file('', '', 'missing closing tag')
-            return self.process_token()
+            return self.get_token()
 
         for lexem in Lexems:
             if lexem.value == tag:
                 self.write_lexem_to_file(lexem.name, lexem.value)
-                return self.process_token()
+                return self.get_token()
         
         self.write_lexem_to_file('', '', 'wrong tag')
-        return self.process_token()
+        return self.get_token()
 
     def process_comma(self):
         symbol = self.get_current_symbol()
@@ -93,13 +93,13 @@ class Lexer:
 
         if comma == '\\n':
             self.write_lexem_to_file('Comma', 'next line')
-            return self.process_token()
+            return self.get_token()
         elif comma == '\\t':
             self.write_lexem_to_file('Comma', 'tabulation')
-            return self.process_token()
+            return self.get_token()
 
         self.write_lexem_to_file('', '', 'wrong divider(coma)')
-        return self.process_token()
+        return self.get_token()
 
     def process_digit(self, current_number):
         if current_number == 0:
@@ -115,4 +115,4 @@ class Lexer:
             else:
                 self.write_lexem_to_file('', '', 'number is not divisible by 5')
             self.return_head()
-        return self.process_token()
+        return self.get_token()

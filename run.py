@@ -12,4 +12,4 @@ if __name__ == '__main__':
 
     print('-' * 50)
 
-    lexer.process_token()
+    lexer.get_token()
