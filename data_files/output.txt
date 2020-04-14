@@ -4,7 +4,7 @@
 <5-digit divisible number '12120'>
 <cell_close_tag '</td>'>
 <cell_open_tag '<td>'>
-<error in sentence 0 in position 33, number is not divisible by 5>
+<error in sentence 0 in position 32, number is not divisible by 5>
 <error in sentence 0 in position 33, unknown symbol 'f'>
 <Comma 'next line'>
 <error in sentence 0 in position 39, missing closing tag>
@@ -15,6 +15,7 @@
 <cell_open_tag '<td>'>
 <5-digit divisible number '12340'>
 <cell_close_tag '</td>'>
+<error in sentence 1 in position 33, wrong divider(coma)>
 <row_close_tag '</tr>'>
 <Comma 'tabulation'>
 <cell_open_tag '<td>'>
