@@ -24,9 +24,9 @@ class Lexer:
             for line_number, line in enumerate(file):
                 self.input_lines[line_number] = line
 
-    def write_lexem_to_file(self, lexem_type, lexem, error_type=''):
+    def write_lexem_to_file(self, lexem_type, lexem, error_type='', error_position=0):
         display_message = f'<{lexem_type} \'{lexem}\'>\n' if not error_type else \
-         f'<error in sentence {self.current_line_number} in position {self.head_position}, {error_type}>\n'
+         f'<error in sentence {self.current_line_number} in position {error_position}, {error_type}>\n'
         with open(self.output_file_name, 'a') as file:
             file.write(display_message)
         print(display_message)
@@ -65,7 +65,7 @@ class Lexer:
             self.head_position += 1
             self.get_token()
         else:
-            self.write_lexem_to_file('', '', f"unknown symbol '{current_symbol}'")
+            self.write_lexem_to_file('', '', f"unknown symbol '{current_symbol}'", self.head_position)
             self.get_token()
 
     def process_tag(self):
@@ -77,7 +77,7 @@ class Lexer:
         self.return_head()
 
         if tag[-1] != '>':
-            self.write_lexem_to_file('', '', 'missing closing tag')
+            self.write_lexem_to_file('', '', 'missing closing tag', self.head_position)
             return self.get_token()
 
         for lexem in Lexems:
@@ -85,7 +85,7 @@ class Lexer:
                 self.write_lexem_to_file(lexem.name, lexem.value)
                 return self.get_token()
         
-        self.write_lexem_to_file('', '', 'wrong tag')
+        self.write_lexem_to_file('', '', 'wrong tag', self.head_position)
         return self.get_token()
 
     def process_comma(self):
@@ -99,7 +99,7 @@ class Lexer:
             self.write_lexem_to_file('Comma', 'tabulation')
             return self.get_token()
 
-        self.write_lexem_to_file('', '', 'wrong divider(coma)')
+        self.write_lexem_to_file('', '', 'wrong divider(coma)', self.head_position)
         return self.get_token()
 
     def process_digit(self, current_number):
@@ -114,6 +114,6 @@ class Lexer:
             if number[-1] == '0':
                 self.write_lexem_to_file("5-digit divisible number", number)
             else:
-                self.write_lexem_to_file('', '', 'number is not divisible by 5')
+                self.write_lexem_to_file('', '', 'number is not divisible by 5', self.head_position-1)
             self.return_head()
         return self.get_token()
