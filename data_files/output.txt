@@ -5,19 +5,15 @@
 <cell_close_tag '</td>'>
 <cell_open_tag '<td>'>
 <error in sentence 0 in position 32, number is not divisible by 5>
-<error in sentence 0 in position 33, unknown symbol 'f'>
-<Comma 'next line'>
-<error in sentence 0 in position 39, missing closing tag>
-<row_close_tag '</tr>'>
 <table_open_tag '<table>'>
 <error in sentence 1 in position 13, wrong tag>
+<cell_open_tag '<td>'>
+<5-digit divisible number '1210'>
+<error in sentence 2 in position 9, unknown symbol 'f'>
+<table_open_tag '<table>'>
 <row_open_tag '<tr>'>
 <cell_open_tag '<td>'>
-<5-digit divisible number '12340'>
+<5-digit divisible number '10'>
 <cell_close_tag '</td>'>
-<error in sentence 1 in position 33, wrong divider(coma)>
 <row_close_tag '</tr>'>
-<Comma 'tabulation'>
-<cell_open_tag '<td>'>
-<5-digit divisible number '0'>
-<cell_close_tag '</td>'>
+<table_close_tag '</table>'>

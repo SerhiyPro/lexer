@@ -30,6 +30,9 @@ class Lexer:
         with open(self.output_file_name, 'a') as file:
             file.write(display_message)
         print(display_message)
+        if error_type:
+            self.current_line_number += 1
+            self.head_position = 0
 
     def get_current_symbol(self):
         line = self.input_lines.get(self.current_line_number)
@@ -113,7 +116,8 @@ class Lexer:
                 symbol = self.get_current_symbol()
             if number[-1] == '0':
                 self.write_lexem_to_file("5-digit divisible number", number)
+                self.return_head()
             else:
                 self.write_lexem_to_file('', '', 'number is not divisible by 5', self.head_position-1)
-            self.return_head()
+            # self.return_head()
         return self.get_token()
